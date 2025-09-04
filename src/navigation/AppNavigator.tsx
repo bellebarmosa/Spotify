@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LandingScreen from '../screens/LandingScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
-import PlaylistScreen from '../screens/PlaylistScreen';
+// import PlaylistScreen from '../screens/PlaylistScreen';
 import HomeScreen from '../screens/HomeScreen'; // New HomeScreen
 import LibraryScreen from '../screens/LibraryScreen'; // Renamed from old HomeScreen
 import ProfileScreen from '../screens/ProfileScreen';
