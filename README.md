@@ -10,18 +10,16 @@ This project was made for the purpose of understanding React Native
 
 ### **Week 2**
 
-Screenshots
-
 ## 📸 Screenshots
 
-### 🏠 Home
-![Home](src/assets/screenshots/Home.png)
+<h3>🏠 Home</h3>
+<img src="src/assets/screenshots/Home.png" width="300"/>
 
-### 📚 Library
-![Library](src/assets/screenshots/Library.png)
+<h3>📚 Library</h3>
+<img src="src/assets/screenshots/Library.png" width="300"/>
 
-### 👤 Profile
-![Profile](src/assets/screenshots/Profile.png)
+<h3>👤 Profile</h3>
+<img src="src/assets/screenshots/Profile.png" width="300"/>
 
 
 
