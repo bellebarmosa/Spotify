@@ -14,7 +14,7 @@ const HomeScreen: React.FC = () => {
       {/* Top Row */}
       <View style={styles.topRow}>
         <Image
-          source={{ uri: "https://i.pravatar.cc/50" }} // replace with profile pic
+          source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaxtxThTArhQKSGAsN0VqZ9r2GbQyRDbV9Gg&s" }} // replace with profile pic
           style={styles.avatar}
         />
         <View style={styles.tabsRow}>
@@ -74,14 +74,6 @@ const HomeScreen: React.FC = () => {
         ))}
       </ScrollView>
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        {["Home", "Search", "Your Library", "Create"].map((item, i) => (
-          <TouchableOpacity key={i} style={styles.navItem}>
-            <Text style={styles.navText}>{item}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
     </ScrollView>
   );
 };

@@ -18,7 +18,7 @@ const ProfileScreen: React.FC = () => {
         </TouchableOpacity>
 
         <Image
-          source={{ uri: "https://i.pravatar.cc/150?img=12" }} // profile avatar
+          source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaxtxThTArhQKSGAsN0VqZ9r2GbQyRDbV9Gg&s" }} // profile avatar
           style={styles.avatar}
         />
 
@@ -72,14 +72,6 @@ const ProfileScreen: React.FC = () => {
         </View>
       ))}
 
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        {["Home", "Search", "Your Library", "Create"].map((item, i) => (
-          <TouchableOpacity key={i} style={styles.navItem}>
-            <Text style={styles.navText}>{item}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
     </ScrollView>
   );
 };

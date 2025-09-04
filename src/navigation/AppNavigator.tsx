@@ -8,6 +8,7 @@ import PlaylistScreen from '../screens/PlaylistScreen';
 import HomeScreen from '../screens/HomeScreen'; // New HomeScreen
 import LibraryScreen from '../screens/LibraryScreen'; // Renamed from old HomeScreen
 import ProfileScreen from '../screens/ProfileScreen';
+import SearchScreen from '../screens/SearchScreen'; // Re-add SearchScreen
 
 export type RootStackParamList = {
   Landing: undefined;
@@ -18,9 +19,9 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   Home: undefined;
-  Playlist: undefined;
-  Profile: undefined;
+  Search: undefined; // Add Search screen
   Library: undefined; // Add Library screen
+  Profile: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -40,9 +41,9 @@ const MainTabNavigator = () => {
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Playlist" component={PlaylistScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Library" component={LibraryScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };
