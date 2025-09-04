@@ -12,11 +12,17 @@ This project was made for the purpose of understanding React Native
 
 Screenshots
 
-![Alt text](src/assets/screenshots/Home.png)
+## 📸 Screenshots
 
-![Alt text](src/assets/screenshots/Library.png)
+### 🏠 Home
+![Home](src/assets/screenshots/Home.png)
 
-![Alt text](src/assets/screenshots/Profile.png)
+### 📚 Library
+![Library](src/assets/screenshots/Library.png)
+
+### 👤 Profile
+![Profile](src/assets/screenshots/Profile.png)
+
 
 
 ```bash
