@@ -13,7 +13,7 @@ This project was made for the purpose of understanding React Native
 ## 📸 Screenshots
 
 <h3>🏠 Home</h3>
-<img src="src/assets/screenshots/Home.png" width="300"/>
+<img src="../Spotify/src/src/assets/screenshots/Home.png" width="300"/>
 
 <h3>📚 Library</h3>
 <img src="src/assets/screenshots/Library.png" width="300"/>
