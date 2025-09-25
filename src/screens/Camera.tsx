@@ -119,39 +119,49 @@
 // export default camera
 
 
-import React, { useState } from "react";
-import { View, Button, Image, StyleSheet, Alert } from "react-native";
-import * as ImagePicker from "expo-image-picker";
+// import React, { useState } from "react";
+// import { View, Button, Image, StyleSheet, Alert } from "react-native";
+// import * as ImagePicker from "expo-image-picker";
 
-export default function CameraScreen() {
-  const [photo, setPhoto] = useState<string | null>(null);
+// export default function CameraScreen() {
+//   const [photo, setPhoto] = useState<string | null>(null);
 
-  const takePhoto = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    if (status !== "granted") {
-      Alert.alert("Permission required", "Camera access is needed to take photos.");
-      return;
-    }
+//   const takePhoto = async () => {
+//     const { status } = await ImagePicker.requestCameraPermissionsAsync();
+//     if (status !== "granted") {
+//       Alert.alert("Permission required", "Camera access is needed to take photos.");
+//       return;
+//     }
 
-    const result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      quality: 1,
-    });
+//     const result = await ImagePicker.launchCameraAsync({
+//       mediaTypes: ImagePicker.MediaTypeOptions.Images,
+//       quality: 1,
+//     });
 
-    if (!result.canceled) {
-      setPhoto(result.assets[0].uri);
-    }
-  };
+//     if (!result.canceled) {
+//       setPhoto(result.assets[0].uri);
+//     }
+//   };
 
+//   return (
+//     <View style={styles.container}>
+//       <Button title="Take a Photo" onPress={takePhoto} />
+//       {photo && <Image source={{ uri: photo }} style={styles.preview} />}
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: { flex: 1, justifyContent: "center", alignItems: "center" },
+//   preview: { width: 300, height: 300, marginTop: 20, borderRadius: 8 },
+// });
+
+import React from 'react'
+
+const camera = () => {
   return (
-    <View style={styles.container}>
-      <Button title="Take a Photo" onPress={takePhoto} />
-      {photo && <Image source={{ uri: photo }} style={styles.preview} />}
-    </View>
-  );
+    <div>camera</div>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  preview: { width: 300, height: 300, marginTop: 20, borderRadius: 8 },
-});
+export default camera
