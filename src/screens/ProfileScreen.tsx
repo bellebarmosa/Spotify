@@ -7,8 +7,24 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList, BottomTabParamList } from '../navigation/AppNavigator';
+
+type ProfileScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<BottomTabParamList, 'Profile'>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 const ProfileScreen: React.FC = () => {
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
+
+  const handleEditPress = () => {
+    navigation.navigate('Camera');
+  };
+
   return (
     <ScrollView style={styles.container}>
       {/* Header */}
@@ -26,7 +42,7 @@ const ProfileScreen: React.FC = () => {
         <Text style={styles.subText}>1 follower • 100 following</Text>
 
         <View style={styles.headerButtons}>
-          <TouchableOpacity style={styles.editButton}>
+          <TouchableOpacity style={styles.editButton} onPress={handleEditPress}>
             <Text style={styles.editText}>Edit</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>

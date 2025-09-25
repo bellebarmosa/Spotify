@@ -4,17 +4,38 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LandingScreen from '../screens/LandingScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import CameraScreen from '../screens/Camera'; // Import CameraScreen
 // import PlaylistScreen from '../screens/PlaylistScreen';
 import HomeScreen from '../screens/HomeScreen'; // New HomeScreen
 import LibraryScreen from '../screens/LibraryScreen'; // Renamed from old HomeScreen
 import ProfileScreen from '../screens/ProfileScreen';
 import SearchScreen from '../screens/SearchScreen'; // Re-add SearchScreen
+// import { Camera , CameraType} from 'expo-camera'; // Import Camera from expo-camera
+
+//import { Camera } from "expo-camera";
+
+{
+  "expo"; {
+    "plugins"; [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
+    ]
+  }
+}
+
 
 export type RootStackParamList = {
   Landing: undefined;
   Login: undefined;
   SignUp: undefined;
   MainTabs: undefined; // New route for the bottom tab navigator
+  Camera: undefined; // Add Camera screen to RootStackParamList
 };
 
 export type BottomTabParamList = {
@@ -55,6 +76,7 @@ const AppNavigator = () => {
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
       <Stack.Screen name="MainTabs" component={MainTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Camera" component={CameraScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

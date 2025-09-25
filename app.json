@@ -1,4 +1,10 @@
 {
   "name": "Spotify",
-  "displayName": "Spotify"
+  "displayName": "Spotify",
+  "android": {
+    "package": "com.anonymous.spotify"
+  },
+  "ios": {
+    "bundleIdentifier": "com.anonymous.spotify"
+  }
 }
