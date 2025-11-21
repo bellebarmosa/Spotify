@@ -7,14 +7,14 @@ This project is created as a requirement for the **Advanced Mobile Development**
 
 I installed Node.js, npm, and the React Native CLI but had issues with the missing brew command and macOS version requirements. I created a React Native project using npx react-native init MyApp, mistakenly using React v20, and experienced NPM cache problems. Despite these challenges, I successfully ran the app on an emulator/physical device.
 
-<img src="assets/images/activity 1/Screenshot 2025-11-21 at 9.58.59 PM.png" width="300">
+<img src="assets/images/activity 1/Screenshot 2025-11-21 at 9.58.59 PM.png" width="500">
 
 
 ## Activity 2
 
-Created a ComponentShowcase screen that displays and uses basic React Native components: Text, Button, Image, and ScrollView. Arrange them in a clean, readable layout. Run the app to ensure everything works, then submit your code and a screenshot of the screen.
+Created a ComponentShowcase screen that displays and uses basic React Native components: Text, Button, Image, and ScrollView. Arranged them in a clean, readable layout. Run the app to ensure everything works, then submitted my code and a screenshot of the screen.
 
-<img src="assets/images/activity 2/Screenshot 2025-11-21 at 9.59.21 PM.png" width="300">
+<img src="assets/images/activity 2/Screenshot 2025-11-21 at 9.59.21 PM.png" width="500">
 
 
 ## Week 3
@@ -45,8 +45,6 @@ The task involves building a Spotify-inspired React Native app with four main pa
   </tr>
   <tr>
     <td><img src="assets/images/week 3/IMG_5203.PNG" width="300"></td>
-    <td></td>
-    <td></td>
   </tr>
 </table>
 
@@ -84,4 +82,4 @@ I implemented a theme switcher in my Spotify app using Redux Toolkit, adding lig
 
 I enhanced my React Native app with real-time location tracking and interactive maps. I added react-native-maps and react-native-geolocation-service to show the user’s location, placed custom markers for mock points of interest, and implemented zoom, pan, and geofencing alerts. I applied a custom map style, tested functionality on iOS and Android, and documented the features with a screenshot and brief note.
 
-<img src="assets/images/week 6/IMG_5209.PNG" width="150">
+<img src="assets/images/week 6/IMG_5209.PNG" width="300">
