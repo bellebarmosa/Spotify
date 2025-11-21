@@ -1,7 +1,9 @@
 # Documentation
 
+This project is created as a requirement for the **Advanced Mobile Development** subject. It showcases my work on building React Native apps, including a Spotify-inspired playlist app, a camera app with real-time filters, and location-based map features.
 
-## Activity 1:
+
+## Activity 1
 
 I installed Node.js, npm, and the React Native CLI but had issues with the missing brew command and macOS version requirements. I created a React Native project using npx react-native init MyApp, mistakenly using React v20, and experienced NPM cache problems. Despite these challenges, I successfully ran the app on an emulator/physical device.
 
@@ -30,28 +32,56 @@ The task involves building a Spotify-inspired React Native app with four main pa
 - Test Accessibility
  Ensure drawer and headers work with screen readers, add ARIA labels, and test keyboard navigation.
 
-<img src="assets/images/week 3/IMG_5197.PNG" width="300">
+<table>
+  <tr>
+    <td><img src="assets/images/week 3/IMG_5197.PNG" width="300"></td>
+    <td><img src="assets/images/week 3/IMG_5198.PNG" width="300"></td>
+    <td><img src="assets/images/week 3/IMG_5199.PNG" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/images/week 3/IMG_5200.PNG" width="300"></td>
+    <td><img src="assets/images/week 3/IMG_5201.PNG" width="300"></td>
+    <td><img src="assets/images/week 3/IMG_5202.PNG" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/images/week 3/IMG_5203.PNG" width="300"></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
-<img src="assets/images/week 3/IMG_5198.PNG" width="300">
 
-<img src="assets/images/week 3/IMG_5199.PNG" width="300">
-
-<img src="assets/images/week 3/IMG_5200.PNG" width="300">
-
-<img src="assets/images/week 3/IMG_5201.PNG" width="300">
-
-<img src="assets/images/week 3/IMG_5202.PNG" width="300">
-
-<img src="assets/images/week 3/IMG_5203.PNG" width="300">
-
-# Week 4
+## Week 4
 
 I built a Spotify-inspired playlist app with state management, animations, and persistence. Using useState and useReducer, I added, removed, and cleared songs, with undo/redo functionality via state history. I implemented smooth animations with react-native-reanimated and saved the playlist and history using AsyncStorage. Finally, I optimized re-renders with React.memo and ensured the app worked across restarts.
 
-# Week 5
+<table>
+  <tr>
+    <td><img src="assets/images/week 4/IMG_5204.PNG" width="300"></td>
+    <td><img src="assets/images/week 4/IMG_5205.PNG" width="300"></td>
+    <td><img src="assets/images/week 4/IMG_5206.PNG" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="assets/images/week 4/IMG_5207.PNG" width="300"></td>
+    <td><img src="assets/images/week 4/IMG_5208.PNG" width="300"></td>
+  </tr>
+</table>
+
+
+## Week 5
 
 I implemented a theme switcher in my Spotify app using Redux Toolkit, adding light/dark modes, custom themes, and smooth transitions with react-native-reanimated, and persisted the selected theme with AsyncStorage. I also built a camera app with real-time filters and editing tools using expo-camera, including grayscale and sepia filters with adjustable intensity, crop and rotate functions, and optimized previews with React.memo. Both apps were tested on iOS and Android, documented, and submitted with screenshots.
 
-#Week 6
+<table>
+  <tr>
+    <td><img src="assets/images/week 5/IMG_5210.PNG" width="300"></td>
+    <td><img src="assets/images/week 5/IMG_5211.PNG" width="300"></td>
+    <td><img src="assets/images/week 5/Screenshot 2025-11-21 at 10.11.00 PM.png" width="300"></td>
+  </tr>
+</table>
+
+## Week 6
 
 I enhanced my React Native app with real-time location tracking and interactive maps. I added react-native-maps and react-native-geolocation-service to show the user’s location, placed custom markers for mock points of interest, and implemented zoom, pan, and geofencing alerts. I applied a custom map style, tested functionality on iOS and Android, and documented the features with a screenshot and brief note.
+
+<img src="assets/images/week 6/IMG_5209.PNG" width="150">
