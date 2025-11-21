@@ -1,50 +1,57 @@
-# Welcome to your Expo app 👋
+# Documentation
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## Activity 1:
 
-1. Install dependencies
+I installed Node.js, npm, and the React Native CLI but had issues with the missing brew command and macOS version requirements. I created a React Native project using npx react-native init MyApp, mistakenly using React v20, and experienced NPM cache problems. Despite these challenges, I successfully ran the app on an emulator/physical device.
 
-   ```bash
-   npm install
-   ```
+<img src="assets/images/activity 1/Screenshot 2025-11-21 at 9.58.59 PM.png" width="300">
 
-2. Start the app
 
-   ```bash
-   npx expo start
-   ```
+## Activity 2
 
-In the output, you'll find options to open the app in a
+Created a ComponentShowcase screen that displays and uses basic React Native components: Text, Button, Image, and ScrollView. Arrange them in a clean, readable layout. Run the app to ensure everything works, then submit your code and a screenshot of the screen.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<img src="assets/images/activity 2/Screenshot 2025-11-21 at 9.59.21 PM.png" width="300">
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## Week 3
 
-When you're ready, run:
+The task involves building a Spotify-inspired React Native app with four main parts:
+- Create Screens
+ Develop Profile, Settings, Sign-up, and Playlists screens, each with a consistent Spotify-style header.
 
-```bash
-npm run reset-project
-```
+- Implement Navigation
+ Set up stack navigation for major screens and add a custom drawer navigation with icons and animated transitions.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Offline Navigation Caching (Bonus)
+ Use AsyncStorage to save the last visited screen and restore it when the app reloads, even offline.
 
-## Learn more
+- Test Accessibility
+ Ensure drawer and headers work with screen readers, add ARIA labels, and test keyboard navigation.
 
-To learn more about developing your project with Expo, look at the following resources:
+<img src="assets/images/week 3/IMG_5197.PNG" width="300">
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+<img src="assets/images/week 3/IMG_5198.PNG" width="300">
 
-## Join the community
+<img src="assets/images/week 3/IMG_5199.PNG" width="300">
 
-Join our community of developers creating universal apps.
+<img src="assets/images/week 3/IMG_5200.PNG" width="300">
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<img src="assets/images/week 3/IMG_5201.PNG" width="300">
+
+<img src="assets/images/week 3/IMG_5202.PNG" width="300">
+
+<img src="assets/images/week 3/IMG_5203.PNG" width="300">
+
+# Week 4
+
+I built a Spotify-inspired playlist app with state management, animations, and persistence. Using useState and useReducer, I added, removed, and cleared songs, with undo/redo functionality via state history. I implemented smooth animations with react-native-reanimated and saved the playlist and history using AsyncStorage. Finally, I optimized re-renders with React.memo and ensured the app worked across restarts.
+
+# Week 5
+
+I implemented a theme switcher in my Spotify app using Redux Toolkit, adding light/dark modes, custom themes, and smooth transitions with react-native-reanimated, and persisted the selected theme with AsyncStorage. I also built a camera app with real-time filters and editing tools using expo-camera, including grayscale and sepia filters with adjustable intensity, crop and rotate functions, and optimized previews with React.memo. Both apps were tested on iOS and Android, documented, and submitted with screenshots.
+
+#Week 6
+
+I enhanced my React Native app with real-time location tracking and interactive maps. I added react-native-maps and react-native-geolocation-service to show the user’s location, placed custom markers for mock points of interest, and implemented zoom, pan, and geofencing alerts. I applied a custom map style, tested functionality on iOS and Android, and documented the features with a screenshot and brief note.
