@@ -62,7 +62,7 @@ export const ThemeToggle: React.FC = () => {
   const themeOptions: { mode: ThemeMode; label: string; icon: string }[] = [
     { mode: 'light', label: 'Light', icon: 'sunny' },
     { mode: 'dark', label: 'Dark', icon: 'moon' },
-    { mode: 'auto', label: 'Auto', icon: 'phone-portrait' },
+    { mode: 'custom', label: 'Custom', icon: 'color-palette' },
   ];
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomeScreen } from '@/screens/HomeScreen';
 import { ProfilePageScreen } from '@/screens/ProfilePageScreen';
+import { SettingsScreen } from '@/screens/SettingsScreen';
 import { ProfileDrawerContent } from '@/components/ProfileDrawerContent';
 
 const Drawer = createDrawerNavigator();
@@ -23,6 +24,7 @@ export const HomeDrawerNavigator: React.FC = () => {
     >
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="ProfilePage" component={ProfilePageScreen} />
+      <Drawer.Screen name="Settings" component={SettingsScreen} />
     </Drawer.Navigator>
   );
 };

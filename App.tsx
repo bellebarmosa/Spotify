@@ -4,12 +4,13 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { AppNavigator } from './navigation/AppNavigator';
 import { store } from './store/store';
-import { initializeTheme, loadTheme } from './store/themeSlice';
+import { initializeTheme, loadTheme, loadCustomColors, initializeCustomColors } from './store/themeSlice';
 import { StyleSheet } from 'react-native';
 
 // Initialize theme on app start
-loadTheme().then((theme) => {
+Promise.all([loadTheme(), loadCustomColors()]).then(([theme, customColors]) => {
   store.dispatch(initializeTheme(theme));
+  store.dispatch(initializeCustomColors(customColors));
 });
 
 export default function App() {

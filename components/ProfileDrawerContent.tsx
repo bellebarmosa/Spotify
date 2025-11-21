@@ -167,6 +167,7 @@ export const ProfileDrawerContent: React.FC<DrawerContentComponentProps> = (prop
             style={styles.menuItem}
             onPress={() => {
               props.navigation.closeDrawer();
+              props.navigation.navigate('Settings' as never);
             }}
             accessibilityRole="button"
             accessibilityLabel="Settings and privacy"

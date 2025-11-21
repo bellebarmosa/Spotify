@@ -1,7 +1,10 @@
+import { ColorPicker } from '@/components/ColorPicker';
 import { SpotifyHeader } from '@/components/SpotifyHeader';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTheme } from '@/hooks/useTheme';
 import { logout } from '@/services/auth';
+import { useAppDispatch } from '@/store/hooks';
+import { setCustomColors } from '@/store/themeSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
@@ -20,7 +23,8 @@ const NOTIFICATIONS_KEY = '@spotify:notifications_enabled';
 
 export const SettingsScreen: React.FC = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-  const { colors } = useTheme();
+  const { colors, mode, customColors } = useTheme();
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
@@ -112,6 +116,67 @@ export const SettingsScreen: React.FC = () => {
             </View>
             <ThemeToggle />
           </View>
+
+          {/* Custom Theme Color Options */}
+          {mode === 'custom' && customColors && (
+            <>
+              <View style={[styles.divider, { backgroundColor: colors.border }]} />
+              <View style={styles.customThemeSection}>
+                <Text style={[styles.sectionTitle, { color: colors.text }]}>
+                  Custom Theme Colors
+                </Text>
+                <Text style={[styles.sectionDescription, { color: colors.textSecondary }]}>
+                  Customize accent colors for your theme
+                </Text>
+
+                <View style={styles.colorPickerContainer}>
+                  <ColorPicker
+                    value={customColors.primary}
+                    onChange={(color) => {
+                      dispatch(
+                        setCustomColors({
+                          ...customColors,
+                          primary: color,
+                          accent: color, // Update accent to match primary
+                        })
+                      );
+                    }}
+                    label="Primary Color"
+                  />
+                </View>
+
+                <View style={styles.colorPickerContainer}>
+                  <ColorPicker
+                    value={customColors.secondary}
+                    onChange={(color) => {
+                      dispatch(
+                        setCustomColors({
+                          ...customColors,
+                          secondary: color,
+                        })
+                      );
+                    }}
+                    label="Secondary Color"
+                  />
+                </View>
+
+                <View style={styles.colorPickerContainer}>
+                  <ColorPicker
+                    value={customColors.accent}
+                    onChange={(color) => {
+                      dispatch(
+                        setCustomColors({
+                          ...customColors,
+                          accent: color,
+                        })
+                      );
+                    }}
+                    label="Accent Color"
+                  />
+                </View>
+              </View>
+            </>
+          )}
         </View>
 
         <TouchableOpacity
@@ -168,6 +233,25 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  divider: {
+    height: 1,
+    marginVertical: 16,
+  },
+  customThemeSection: {
+    marginTop: 8,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  sectionDescription: {
+    fontSize: 14,
+    marginBottom: 16,
+  },
+  colorPickerContainer: {
+    marginBottom: 12,
   },
 });
 
