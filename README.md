@@ -7,14 +7,14 @@ This project is created as a requirement for the **Advanced Mobile Development**
 
 I installed Node.js, npm, and the React Native CLI but had issues with the missing brew command and macOS version requirements. I created a React Native project using npx react-native init MyApp, mistakenly using React v20, and experienced NPM cache problems. Despite these challenges, I successfully ran the app on an emulator/physical device.
 
-<img src="assets/images/activity 1/Screenshot 2025-11-21 at 9.58.59 PM.png" width="500">
+<img src="assets/images/activity 1/Screenshot 2025-11-21 at 9.58.59 PM.png" width="700">
 
 
 ## Activity 2
 
 Created a ComponentShowcase screen that displays and uses basic React Native components: Text, Button, Image, and ScrollView. Arranged them in a clean, readable layout. Run the app to ensure everything works, then submitted my code and a screenshot of the screen.
 
-<img src="assets/images/activity 2/Screenshot 2025-11-21 at 9.59.21 PM.png" width="500">
+<img src="assets/images/activity 2/Screenshot 2025-11-21 at 9.59.21 PM.png" width="700">
 
 
 ## Week 3
@@ -51,7 +51,7 @@ The task involves building a Spotify-inspired React Native app with four main pa
 
 ## Week 4
 
-I built a Spotify-inspired playlist app with state management, animations, and persistence. Using useState and useReducer, I added, removed, and cleared songs, with undo/redo functionality via state history. I implemented smooth animations with react-native-reanimated and saved the playlist and history using AsyncStorage. Finally, I optimized re-renders with React.memo and ensured the app worked across restarts.
+I added the current app with state management, animations, and persistence. Using useState and useReducer, I added, removed, and cleared songs, with undo/redo functionality via state history. I implemented smooth animations with react-native-reanimated and saved the playlist and history using AsyncStorage. Finally, I optimized re-renders with React.memo and ensured the app worked across restarts.
 
 <table>
   <tr>
