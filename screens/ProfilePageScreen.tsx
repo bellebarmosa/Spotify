@@ -6,28 +6,62 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
-import { getUser } from '@/services/auth';
+import { getUser, updateUser } from '@/services/auth';
+import { CameraModal } from '@/components/CameraModal';
+import { MapScreen } from '@/screens/MapScreen';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const PROFILE_PICTURE_KEY = '@spotify:profile_picture';
 
 export const ProfilePageScreen: React.FC = () => {
   const [username, setUsername] = useState('yves');
   const [followers, setFollowers] = useState(1);
   const [following, setFollowing] = useState(104);
+  const [profilePictureUri, setProfilePictureUri] = useState<string | null>(null);
+  const [isCameraVisible, setIsCameraVisible] = useState(false);
+  const [isMapVisible, setIsMapVisible] = useState(false);
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
     loadUser();
+    loadProfilePicture();
   }, []);
 
   const loadUser = async () => {
     const user = await getUser();
     if (user?.username) {
       setUsername(user.username);
+    }
+  };
+
+  const loadProfilePicture = async () => {
+    try {
+      const uri = await AsyncStorage.getItem(PROFILE_PICTURE_KEY);
+      if (uri) {
+        setProfilePictureUri(uri);
+      }
+    } catch (error) {
+      console.error('Error loading profile picture:', error);
+    }
+  };
+
+  const handleSaveProfilePicture = async (uri: string) => {
+    try {
+      await AsyncStorage.setItem(PROFILE_PICTURE_KEY, uri);
+      setProfilePictureUri(uri);
+      // Also update user object if needed
+      await updateUser({ profilePicture: uri });
+      Alert.alert('Success', 'Profile picture updated!');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to save profile picture');
+      console.error(error);
     }
   };
 
@@ -74,11 +108,19 @@ export const ProfilePageScreen: React.FC = () => {
         {/* Profile Header Section */}
         <View style={styles.profileHeader}>
           <View style={styles.profilePictureContainer}>
-            <View style={styles.profilePicture}>
-              <Text style={styles.profileInitial}>
-                {username.charAt(0).toUpperCase()}
-              </Text>
-            </View>
+            {profilePictureUri ? (
+              <ExpoImage
+                source={{ uri: profilePictureUri }}
+                style={styles.profilePictureImage}
+                contentFit="cover"
+              />
+            ) : (
+              <View style={styles.profilePicture}>
+                <Text style={styles.profileInitial}>
+                  {username.charAt(0).toUpperCase()}
+                </Text>
+              </View>
+            )}
           </View>
           <Text style={styles.username}>{username}</Text>
           <Text style={styles.stats}>
@@ -87,6 +129,7 @@ export const ProfilePageScreen: React.FC = () => {
           <View style={styles.actionButtons}>
             <TouchableOpacity
               style={styles.editButton}
+              onPress={() => setIsCameraVisible(true)}
               accessibilityRole="button"
               accessibilityLabel="Edit profile"
             >
@@ -98,6 +141,14 @@ export const ProfilePageScreen: React.FC = () => {
               accessibilityLabel="Share profile"
             >
               <Ionicons name="share-outline" size={20} color="#FFFFFF" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.iconButton}
+              onPress={() => setIsMapVisible(true)}
+              accessibilityRole="button"
+              accessibilityLabel="Open map"
+            >
+              <Ionicons name="map-outline" size={20} color="#FFFFFF" />
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.iconButton}
@@ -171,6 +222,21 @@ export const ProfilePageScreen: React.FC = () => {
           ))}
         </View>
       </ScrollView>
+
+      {/* Camera Modal */}
+      <CameraModal
+        visible={isCameraVisible}
+        onClose={() => setIsCameraVisible(false)}
+        onSave={handleSaveProfilePicture}
+        currentImageUri={profilePictureUri || undefined}
+      />
+
+      {/* Map Modal */}
+      {isMapVisible && (
+        <View style={StyleSheet.absoluteFill}>
+          <MapScreen onClose={() => setIsMapVisible(false)} />
+        </View>
+      )}
     </View>
   );
 };
@@ -208,6 +274,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFD93D',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  profilePictureImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
   profileInitial: {
     fontSize: 40,
@@ -337,6 +408,18 @@ const styles = StyleSheet.create({
   artistFollowers: {
     fontSize: 14,
     color: '#B3B3B3',
+  },
+  mapCloseButton: {
+    position: 'absolute',
+    top: 60,
+    right: 16,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1000,
   },
 });
 

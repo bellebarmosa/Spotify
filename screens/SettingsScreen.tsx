@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import { SpotifyHeader } from '@/components/SpotifyHeader';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { useTheme } from '@/hooks/useTheme';
+import { logout } from '@/services/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Switch,
-  ScrollView,
   Alert,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
-import { logout } from '@/services/auth';
-import { SpotifyHeader } from '@/components/SpotifyHeader';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const NOTIFICATIONS_KEY = '@spotify:notifications_enabled';
-const DARK_MODE_KEY = '@spotify:dark_mode_enabled';
 
 export const SettingsScreen: React.FC = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
-  const [darkModeEnabled, setDarkModeEnabled] = useState(true);
+  const { colors } = useTheme();
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
@@ -30,12 +31,8 @@ export const SettingsScreen: React.FC = () => {
   const loadSettings = async () => {
     try {
       const notifications = await AsyncStorage.getItem(NOTIFICATIONS_KEY);
-      const darkMode = await AsyncStorage.getItem(DARK_MODE_KEY);
       if (notifications !== null) {
         setNotificationsEnabled(notifications === 'true');
-      }
-      if (darkMode !== null) {
-        setDarkModeEnabled(darkMode === 'true');
       }
     } catch (error) {
       console.error('Error loading settings:', error);
@@ -51,14 +48,6 @@ export const SettingsScreen: React.FC = () => {
     }
   };
 
-  const handleDarkModeToggle = async (value: boolean) => {
-    setDarkModeEnabled(value);
-    try {
-      await AsyncStorage.setItem(DARK_MODE_KEY, value.toString());
-    } catch (error) {
-      console.error('Error saving dark mode setting:', error);
-    }
-  };
 
   const handleLogout = () => {
     Alert.alert(
@@ -85,19 +74,19 @@ export const SettingsScreen: React.FC = () => {
 
   return (
     <ScrollView
-      style={styles.container}
+      style={[styles.container, { backgroundColor: colors.background }]}
       contentContainerStyle={{ paddingBottom: insets.bottom }}
       accessibilityLabel="Settings screen"
     >
       <SpotifyHeader title="Settings" showMenuButton={true} />
-      <View style={styles.content}>
+      <View style={[styles.content, { backgroundColor: colors.background }]}>
         <View style={styles.section}>
-          <View style={styles.settingRow}>
+          <View style={[styles.settingRow, { borderBottomColor: colors.border }]}>
             <View style={styles.settingInfo}>
-              <Text style={styles.settingLabel} accessibilityRole="text">
+              <Text style={[styles.settingLabel, { color: colors.text }]} accessibilityRole="text">
                 Notifications
               </Text>
-              <Text style={styles.settingDescription} accessibilityRole="text">
+              <Text style={[styles.settingDescription, { color: colors.textSecondary }]} accessibilityRole="text">
                 Enable push notifications
               </Text>
             </View>
@@ -114,22 +103,14 @@ export const SettingsScreen: React.FC = () => {
 
           <View style={styles.settingRow}>
             <View style={styles.settingInfo}>
-              <Text style={styles.settingLabel} accessibilityRole="text">
-                Dark Mode
+              <Text style={[styles.settingLabel, { color: colors.text }]} accessibilityRole="text">
+                Theme
               </Text>
-              <Text style={styles.settingDescription} accessibilityRole="text">
-                Use dark theme
+              <Text style={[styles.settingDescription, { color: colors.textSecondary }]} accessibilityRole="text">
+                Choose your theme preference
               </Text>
             </View>
-            <Switch
-              value={darkModeEnabled}
-              onValueChange={handleDarkModeToggle}
-              trackColor={{ false: '#767577', true: '#1DB954' }}
-              thumbColor={darkModeEnabled ? '#FFFFFF' : '#f4f3f4'}
-              accessibilityRole="switch"
-              accessibilityLabel="Toggle dark mode"
-              accessibilityState={{ checked: darkModeEnabled }}
-            />
+            <ThemeToggle />
           </View>
         </View>
 
@@ -150,7 +131,6 @@ export const SettingsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
   },
   content: {
     padding: 20,
@@ -164,7 +144,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#1a1a1a',
   },
   settingInfo: {
     flex: 1,
@@ -172,13 +151,11 @@ const styles = StyleSheet.create({
   },
   settingLabel: {
     fontSize: 16,
-    color: '#FFFFFF',
     fontWeight: '600',
     marginBottom: 4,
   },
   settingDescription: {
     fontSize: 14,
-    color: '#B3B3B3',
   },
   logoutButton: {
     backgroundColor: '#E22134',
